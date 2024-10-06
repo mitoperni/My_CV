@@ -91,9 +91,14 @@ const Experience = () => {
   const sortedExperiences = useMemo(() => {
     return [...experiences].sort((a, b) => {
       if (sortBy === "date") {
-        return sortOrder === "desc"
-          ? new Date(b.date) - new Date(a.date)
-          : new Date(a.date) - new Date(b.date);
+        const getLatestDate = (dateString) => {
+          const dates = dateString.split(" - ");
+          return new Date(dates[dates.length - 1] === "Present" ? new Date() : dates[dates.length - 1]);
+        };
+        const dateA = getLatestDate(a.date);
+        const dateB = getLatestDate(b.date);
+        // @ts-ignore
+        return sortOrder === "desc" ? dateB - dateA : dateA - dateB;
       } else if (sortBy === "title") {
         return sortOrder === "desc"
           ? b.title.localeCompare(a.title)
@@ -103,6 +108,7 @@ const Experience = () => {
           ? b.location.localeCompare(a.location)
           : a.location.localeCompare(b.location);
       }
+      return 0;
     });
   }, [experiences, sortBy, sortOrder]);
 
