@@ -7,7 +7,7 @@ const SocialLinks = () => (
         <a href="https://linkedin.com/in/migueltoyaspernichi" className="text-blue-600 hover:text-blue-800">
           <Linkedin size={24} />
         </a>
-        <a href="https://github.com/yourgithub" className="text-gray-800 hover:text-gray-600">
+        <a href="https://github.com/mitoperni" className="text-gray-800 hover:text-gray-600">
           <GitHub size={24} />
         </a>
         <a href="https://instagram.com/mpernichi" className="text-pink-600 hover:text-pink-800">
